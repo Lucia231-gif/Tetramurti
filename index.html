@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tetramurti 💖</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      text-align: center;
+      background: black;
+      color: white;
+      overflow: hidden;
+    }
+
+    #startBtn {
+      margin-top: 200px;
+      padding: 15px 30px;
+      font-size: 20px;
+      border: none;
+      border-radius: 25px;
+      background: pink;
+      color: black;
+    }
+
+    #content {
+      display: none;
+    }
+
+    #text {
+      width: 80%;
+      margin: 20px auto;
+      font-size: 18px;
+      line-height: 1.6;
+      white-space: pre-line;
+    }
+
+    img {
+      width: 250px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-top: 20px;
+    }
+
+    .fade {
+      animation: fade 2s;
+    }
+
+    @keyframes fade {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+  </style>
+</head>
+
+<body>
+
+<button id="startBtn" onclick="start()">Click for Surprise 💖</button>
+
+<div id="content">
+  <h1>My Tetramurti 💫</h1>
+
+  <img id="slide" src="photo1.jpg">
+
+  <div id="text"></div>
+</div>
+
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const photos = [
+  "photo1.jpg",
+  "photo2.jpg",
+  "photo3.jpg",
+  "photo4.jpg",
+  "photo5.jpg",
+  "photo6.jpg",
+  "photo7.jpg",
+  "photo8.jpg"
+];
+
+let index = 0;
+
+const message = `Hum mile bhi toh unknowingly,
+Kabhi socha bhi nahi tha ki itna strong bond banega suddenly…
+
+Pehle tum mili Muskan,
+Itne kam time mein hi lagne laga — yeh toh meri hi type ki hai 🫶
+
+Phir entry hui Simran ki —
+Aur dosti aur gehri ho gayi 🎨
+
+Aur phir Lina…
+Hum trimurti se tetramurti ban gaye 💫
+
+Complete. Perfect. Irreplaceable.
+
+Saath time spend karna…
+Shaam se raat aur raat se subah kab ho jaati thi —
+Pata hi nahi chalta tha 🌙☀️
+
+Endless talks, random topics,
+Aur nonstop laughter 😂
+
+Kabhi gussa, kabhi manana,
+Kabhi saath sona, saath khana…
+
+Yeh sab chhoti chhoti cheezein hi meri life ke biggest moments ban gaye ❤️`;
+
+function start() {
+  document.getElementById("startBtn").style.display = "none";
+  document.getElementById("content").style.display = "block";
+
+  document.getElementById("music").play();
+
+  typeWriter();
+  slideShow();
+}
+
+function typeWriter() {
+  let i = 0;
+  let txt = message;
+  let speed = 40;
+
+  function typing() {
+    if (i < txt.length) {
+      document.getElementById("text").innerHTML += txt.charAt(i);
+      i++;
+      setTimeout(typing, speed);
+    }
+  }
+
+  typing();
+}
+
+function slideShow() {
+  setInterval(() => {
+    index = (index + 1) % photos.length;
+    let img = document.getElementById("slide");
+    img.src = photos[index];
+    img.classList.add("fade");
+  }, 2500);
+}
+</script>
+
+</body>
+  </html>
